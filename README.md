@@ -3,7 +3,10 @@
 ## Data
 
 OpenAlex: 2025-10-01
+
 Walden: 2025-11-05
+
+Publication years: 2022-2024 (unless otherwise stated)
 
 Data was accessed via the Scholarly Data Warehouse of the SUB Göttingen: https://subugoe.github.io/scholcomm_analytics/data.html
 
