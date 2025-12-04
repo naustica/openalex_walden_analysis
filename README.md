@@ -49,7 +49,7 @@ ORDER BY n DESC
 ```sql
 SELECT COUNT(DISTINCT(doi)) AS n, primary_location.source.type AS source_type
 FROM {snapshot}
-WHERE primary_location.source.type = 'journal' AND publication_year BETWEEN 2022 AND 2024
+WHERE publication_year BETWEEN 2022 AND 2024
 GROUP BY source_type
 ORDER BY n DESC
 ```
