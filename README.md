@@ -14,6 +14,14 @@ Data was accessed via the Scholarly Data Warehouse of the SUB Göttingen: https:
 
 ### Document types
 
+```sql
+SELECT COUNT(DISTINCT(doi)) AS n, type
+FROM {snapshot}
+WHERE primary_location.source.type = 'journal' AND publication_year BETWEEN 2022 AND 2024
+GROUP BY type
+ORDER BY n DESC
+```
+
 |    | type                    |   n_openalex |   n_walden |   change | pct_change   |
 |---:|:------------------------|-------------:|-----------:|---------:|:-------------|
 |  0 | article                 |     15610743 |   16940674 |  1329931 | 8.52         |
@@ -38,6 +46,14 @@ Data was accessed via the Scholarly Data Warehouse of the SUB Göttingen: https:
 
 ### Publication types
 
+```sql
+SELECT COUNT(DISTINCT(doi)) AS n, primary_location.source.type AS source_type
+FROM {snapshot}
+WHERE primary_location.source.type = 'journal' AND publication_year BETWEEN 2022 AND 2024
+GROUP BY source_type
+ORDER BY n DESC
+```
+
 |    | source_type    |   n_openalex |   n_walden |   change |   pct_change |
 |---:|:---------------|-------------:|-----------:|---------:|-------------:|
 |  0 | journal        |     17281019 |   17422669 |   141650 |         0.82 |
@@ -53,6 +69,14 @@ Data was accessed via the Scholarly Data Warehouse of the SUB Göttingen: https:
 
 ### Open Access Status
 
+```sql
+SELECT COUNT(DISTINCT(doi)) AS n, open_access.is_oa, open_access.oa_status
+FROM {snapshot}
+WHERE primary_location.source.type = 'journal' AND type = 'article' AND publication_year BETWEEN 2022 AND 2024
+GROUP BY is_oa, oa_status
+ORDER BY n DESC
+```
+
 |    | oa_status   |   n_openalex |   n_walden |   change |   pct_change |
 |---:|:------------|-------------:|-----------:|---------:|-------------:|
 |  0 | closed      |      6396765 |    6419423 |    22658 |         0.35 |
@@ -63,6 +87,14 @@ Data was accessed via the Scholarly Data Warehouse of the SUB Göttingen: https:
 |  5 | green       |       473087 |     473677 |      590 |         0.12 |
 
 ### Publisher (Top 20)
+
+```sql
+SELECT COUNT(DISTINCT(doi)) AS n, primary_location.source.host_organization_name
+FROM {snapshot}
+WHERE primary_location.source.type = 'journal' AND type = 'article' AND publication_year BETWEEN 2022 AND 2024
+GROUP BY host_organization_name
+ORDER BY n DESC
+```
 
 |    | host_organization_name                            |   n_openalex |   n_walden |   change |   pct_change |
 |---:|:--------------------------------------------------|-------------:|-----------:|---------:|-------------:|
@@ -89,6 +121,14 @@ Data was accessed via the Scholarly Data Warehouse of the SUB Göttingen: https:
 
 ### References per publisher (Top 20)
 
+```sql
+SELECT SUM(referenced_works_count) AS n, primary_location.source.host_organization_name
+FROM {snapshot}
+WHERE primary_location.source.type = 'journal' AND type = 'article' AND publication_year BETWEEN 2022 AND 2024
+GROUP BY host_organization_name
+ORDER BY n DESC
+```
+
 |    | host_organization_name                            |   r_openalex |   r_walden |   change |   pct_change |
 |---:|:--------------------------------------------------|-------------:|-----------:|---------:|-------------:|
 |  0 | Elsevier BV                                       |     86479521 |  109874976 | 23395455 |        27.05 |
@@ -113,6 +153,14 @@ Data was accessed via the Scholarly Data Warehouse of the SUB Göttingen: https:
 | 19 | Emerald Publishing Limited                        |      2385213 |    2918749 |   533536 |        22.37 |
 
 ### Journal articles per publication year
+
+```sql
+SELECT COUNT(DISTINCT(doi)) AS n, publication_year
+FROM {snapshot}
+WHERE primary_location.source.type = 'journal' AND type = 'article' AND publication_year BETWEEN 2020 AND 2024
+GROUP BY publication_year
+ORDER BY publication_year DESC
+```
 
 |    |   publication_year |   n_openalex |   n_walden |   change |   pct_change |
 |---:|-------------------:|-------------:|-----------:|---------:|-------------:|
