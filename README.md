@@ -10,6 +10,8 @@ Publication years: 2022-2024 (unless otherwise stated)
 
 Data was accessed via the Scholarly Data Warehouse of the SUB Göttingen: https://subugoe.github.io/scholcomm_analytics/data.html
 
+Analysis code can be found [here](Codebook.ipynb).
+
 ## Results
 
 ### Document types
@@ -172,7 +174,7 @@ ORDER BY publication_year DESC
 
 ### Number of rows per table
 
-|    |   tables           |   n_openalex |   n_walden |     change |   pct_change |
+|    |   table            |   n_openalex |   n_walden |     change |   pct_change |
 |---:|-------------------:|-------------:|-----------:|-----------:|-------------:|
 |  0 | authors            |    104942999 |  115794829 |   10851830 |        10.34 |
 |  1 | funders            |        32437 |      32437 |          0 |            0 |
@@ -181,4 +183,14 @@ ORDER BY publication_year DESC
 |  4 | sources            |       260787 |     255250 |      -5537 |        -2.12 |
 |  5 | topics             |         4516 |       4516 |          0 |            0 |
 |  6 | works              |    271335309 |  463042077 |  191706768 |        70.65 |
+
+### Schema changes 
+
+Code for schema evaluation is retrieved from [here](https://github.com/naustica/openalex_schema)
+
+- [Works](Works.ipynb)
+- [Funders](Funders.ipynb)
+- [Publishers](Publishers.ipynb)
+- [Sources](Sources.ipynb)
+- [Institutions](Institutions.ipynb)
 
