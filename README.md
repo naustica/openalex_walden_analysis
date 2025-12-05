@@ -186,7 +186,7 @@ ORDER BY publication_year DESC
 
 ### Schema changes 
 
-Code for schema evaluation is retrieved from [here](https://github.com/naustica/openalex_schema)
+Code for schema evaluation is retrieved from [here](https://github.com/naustica/openalex_schema).
 
 - [Works](Works.ipynb)
 - [Funders](Funders.ipynb)
