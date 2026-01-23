@@ -222,35 +222,35 @@ ORDER BY n DESC
 ### Grants (Top 20)
 
 ```sql
-SELECT COUNT(grant.id|grant.award_id) AS n, grant.funder_id|grant.funder AS funder_id
+SELECT COUNT(grant.id|grant.award_id) AS n, grant.funder_display_name
 FROM {snapshot}, UNNEST(awards|grants) AS grant
 WHERE primary_location.source.type = 'journal' AND publication_year BETWEEN 2022 AND 2024 AND (type = 'article' OR type = 'review')
-GROUP BY funder_id
+GROUP BY funder_display_name
 ORDER BY n DESC
 ```
 
-|    | funder_id                        |   n_openalex |   n_walden |   change |   pct_change |
-|---:|:---------------------------------|-------------:|-----------:|---------:|-------------:|
-|  0 | https://openalex.org/F4320321001 |      1463516 |    1456078 |    -7438 |        -0.51 |
-|  1 | https://openalex.org/F4320335777 |       163991 |     162800 |    -1191 |        -0.73 |
-|  2 | https://openalex.org/F4320334764 |       128342 |     126240 |    -2102 |        -1.64 |
-|  3 | https://openalex.org/F4320332161 |       126402 |     121667 |    -4735 |        -3.75 |
-|  4 | https://openalex.org/F4320306076 |       118946 |     115302 |    -3644 |        -3.06 |
-|  5 | https://openalex.org/F4320335787 |        87326 |      86439 |     -887 |        -1.02 |
-|  6 | https://openalex.org/F4320320879 |        86309 |      83882 |    -2427 |        -2.81 |
-|  7 | https://openalex.org/F4320322120 |        75647 |      75023 |     -624 |        -0.82 |
-|  8 | https://openalex.org/F4320321543 |        60066 |      59785 |     -281 |        -0.47 |
-|  9 | https://openalex.org/F4320322025 |        43147 |      42657 |     -490 |        -1.14 |
-| 10 | https://openalex.org/F4320324174 |        39073 |      38915 |     -158 |        -0.4  |
-| 11 | https://openalex.org/F4320334779 |        33985 |      33650 |     -335 |        -0.99 |
-| 12 | https://openalex.org/F4320320997 |        33824 |      33562 |     -262 |        -0.77 |
-| 13 | https://openalex.org/F4320334627 |        33358 |      66215 |    32857 |        98.5  |
-| 14 | https://openalex.org/F4320334704 |        28688 |      28250 |     -438 |        -1.53 |
-| 15 | https://openalex.org/F4320322769 |        28053 |      27929 |     -124 |        -0.44 |
-| 16 | https://openalex.org/F4320322930 |        27064 |      26744 |     -320 |        -1.18 |
-| 17 | https://openalex.org/F4320337111 |        26863 |      26764 |      -99 |        -0.37 |
-| 18 | https://openalex.org/F4320334593 |        25888 |      24909 |     -979 |        -3.78 |
-| 19 | https://openalex.org/F4320334771 |        25565 |      25335 |     -230 |        -0.9  |
+|    | funder_display_name                                               |   n_openalex |   n_walden |   change |   pct_change |
+|---:|:------------------------------------------------------------------|-------------:|-----------:|---------:|-------------:|
+|  0 | National Natural Science Foundation of China                      |      1463516 |    1456078 |    -7438 |        -0.51 |
+|  1 | National Key Research and Development Program of China            |       163991 |     162800 |    -1191 |        -0.73 |
+|  2 | Japan Society for the Promotion of Science                        |       128342 |     126240 |    -2102 |        -1.64 |
+|  3 | National Institutes of Health                                     |       126402 |     121667 |    -4735 |        -3.75 |
+|  4 | National Science Foundation                                       |       118946 |     115302 |    -3644 |        -3.06 |
+|  5 | Fundamental Research Funds for the Central Universities           |        87326 |      86439 |     -887 |        -1.02 |
+|  6 | Deutsche Forschungsgemeinschaft                                   |        86309 |      83882 |    -2427 |        -2.81 |
+|  7 | National Research Foundation of Korea                             |        75647 |      75023 |     -624 |        -0.82 |
+|  8 | China Postdoctoral Science Foundation                             |        60066 |      59785 |     -281 |        -0.47 |
+|  9 | Conselho Nacional de Desenvolvimento Científico e Tecnológico     |        43147 |      42657 |     -490 |        -1.14 |
+| 10 | Natural Science Foundation of Shandong Province                   |        39073 |      38915 |     -158 |        -0.4  |
+| 11 | Fundação para a Ciência e a Tecnologia                            |        33985 |      33650 |     -335 |        -0.99 |
+| 12 | Fundação de Amparo à Pesquisa do Estado de São Paulo              |        33824 |      33562 |     -262 |        -0.77 |
+| 13 | Engineering and Physical Sciences Research Council                |        33358 |      66215 |    32857 |        98.5  |
+| 14 | Australian Research Council                                       |        28688 |      28250 |     -438 |        -1.53 |
+| 15 | Natural Science Foundation of Jiangsu Province                    |        28053 |      27929 |     -124 |        -0.44 |
+| 16 | Ministerio de Ciencia e Innovación                                |        27064 |      26744 |     -320 |        -1.18 |
+| 17 | Basic and Applied Basic Research Foundation of Guangdong Province |        26863 |      26764 |      -99 |        -0.37 |
+| 18 | Natural Sciences and Engineering Research Council of Canada       |        25888 |      24909 |     -979 |        -3.78 |
+| 19 | Science and Engineering Research Board                            |        25565 |      25335 |     -230 |        -0.9  |
 
 OAL grant id count: 5,420,652
 Walden grant id count: 5,506,984
