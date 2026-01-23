@@ -253,6 +253,7 @@ ORDER BY n DESC
 | 19 | Science and Engineering Research Board                            |        25565 |      25335 |     -230 |        -0.9  |
 
 OAL grant id count: 5,420,652
+
 Walden grant id count: 5,506,984
 
 ### Schema changes 
